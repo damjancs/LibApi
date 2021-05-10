@@ -9,11 +9,12 @@ namespace LibApi.Entities
     public class LibraryDbContext : DbContext
     {
         private string _connectionString =
-            @"Server=(localdb)\mssqllocaldb;Database=LibraryDb;Trusted_Connection=True;";
+            @"Server=(localdb)\mssqllocaldb;Database=LibraryAPIDb;Trusted_Connection=True;";
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Borrow> Borrows { get; set; }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Author> Authors { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,11 +23,12 @@ namespace LibApi.Entities
                 .Property(b => b.Name)
                 .IsRequired();
 
-            modelBuilder.Entity<Customer>()
-                .Property(c => c.Name)
+            modelBuilder.Entity<User>()
+                .Property(u => u.Email)
                 .IsRequired();
-            modelBuilder.Entity<Customer>()
-                .Property(c => c.Surname)
+
+            modelBuilder.Entity<Role>()
+                .Property(r => r.Name)
                 .IsRequired();
         }
 

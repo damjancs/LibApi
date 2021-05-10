@@ -17,11 +17,20 @@ namespace LibApi
             CreateMap<Author, AuthorDto>();
 
             CreateMap<CreateBookDto, Book>();
-              
 
-                  
-                
-                
+            CreateMap<CreateAuthorDto, Author>();
+
+            CreateMap<CreateBorrowDto, Borrow>();
+
+            CreateMap<Borrow, BorrowDto>()
+                .ForMember(m => m.Email, c => c.MapFrom(s => s.User.Email))
+                .ForMember(m => m.Book, c => c.MapFrom(s => s.Book));
+
+
+
+
+
+
         }
     }
 }

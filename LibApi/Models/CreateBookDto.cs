@@ -12,8 +12,6 @@ namespace LibApi.Models
         [Required]
         public string Name { get; set; }
         public int PageCount { get; set; }
-        public string AuthorName { get; set; }
-        public string AuthorSurname { get; set; }
         public string BookType { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace LibApi.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-
-        public List<Book> Books { get; set; }
+        public int BookId { get; set; }
+        public virtual Book Book { get; set; }
 
 
     }

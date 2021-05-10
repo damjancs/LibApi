@@ -26,6 +26,9 @@ namespace LibApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -33,6 +36,9 @@ namespace LibApi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId")
+                        .IsUnique();
 
                     b.ToTable("Authors");
                 });
@@ -43,9 +49,6 @@ namespace LibApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AuthorId")
-                        .HasColumnType("int");
 
                     b.Property<string>("BookType")
                         .HasColumnType("nvarchar(max)");
@@ -58,8 +61,6 @@ namespace LibApi.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
                 });
@@ -77,22 +78,38 @@ namespace LibApi.Migrations
                     b.Property<DateTime>("BroughtTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("TakenDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Borrows");
                 });
 
-            modelBuilder.Entity("LibApi.Entities.Customer", b =>
+            modelBuilder.Entity("LibApi.Entities.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("LibApi.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,26 +119,38 @@ namespace LibApi.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("LibApi.Entities.Book", b =>
+            modelBuilder.Entity("LibApi.Entities.Author", b =>
                 {
-                    b.HasOne("LibApi.Entities.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorId");
+                    b.HasOne("LibApi.Entities.Book", "Book")
+                        .WithOne("Author")
+                        .HasForeignKey("LibApi.Entities.Author", "BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Author");
+                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("LibApi.Entities.Borrow", b =>
@@ -132,20 +161,31 @@ namespace LibApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LibApi.Entities.Customer", "Customer")
+                    b.HasOne("LibApi.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Book");
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LibApi.Entities.Author", b =>
+            modelBuilder.Entity("LibApi.Entities.User", b =>
                 {
-                    b.Navigation("Books");
+                    b.HasOne("LibApi.Entities.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("LibApi.Entities.Book", b =>
+                {
+                    b.Navigation("Author");
                 });
 #pragma warning restore 612, 618
         }
