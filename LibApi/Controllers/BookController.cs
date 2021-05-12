@@ -38,6 +38,7 @@ namespace LibApi.Controllers
         }
 
         [HttpPost("{id}")]
+        [Authorize(Roles ="Administrator, Moderator")]
         public ActionResult UpdateBook([FromRoute] int id, [FromBody] UpdateBookDto dto)
         {
             _bookService.Update(id, dto);
@@ -48,6 +49,7 @@ namespace LibApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult DeleteBook([FromRoute] int id)
         {
             _bookService.Delete(id);
@@ -65,5 +67,6 @@ namespace LibApi.Controllers
 
             return Created($"/api/library/book/{id}", null);
         }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LibApi.Models;
 using LibApi.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace LibApi.Controllers
 {
     [Route("api/library/book/{BookId}/author")]
     [ApiController]
+    [Authorize(Roles ="Administrator, Moderator")]
     public class AuthorController : ControllerBase
     {
         private IAuthorService _authorService;

@@ -776,3 +776,29 @@
 2021-05-10 15:55:00.4653 Info Validating config: TargetNames=allfile, exceptions, RequestTime, ConfigItems=58, FilePath=C:\Users\ddane\source\repos\LibApi\LibApi\bin\Debug\net5.0\NLog.config
 2021-05-10 15:55:00.4817 Info Configuration initialized.
 2021-05-10 15:55:00.4817 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.9.12899. Product version: 4.7.9+e8712e62842e2d74d60fdf37cf74d743750e5ca2. GlobalAssemblyCache: False
+2021-05-10 16:10:25.7266 Info Message Template Auto Format enabled
+2021-05-10 16:10:25.7394 Info Loading assembly: NLog.Web.AspNetCore
+2021-05-10 16:10:25.7820 Info Adding target FileTarget(Name=allfile)
+2021-05-10 16:10:25.7820 Info Adding target FileTarget(Name=exceptions)
+2021-05-10 16:10:25.7820 Info Adding target FileTarget(Name=RequestTime)
+2021-05-10 16:10:25.8095 Info Validating config: TargetNames=allfile, exceptions, RequestTime, ConfigItems=58, FilePath=C:\Users\ddane\source\repos\LibApi\LibApi\bin\Debug\net5.0\NLog.config
+2021-05-10 16:10:25.8222 Info Configuration initialized.
+2021-05-10 16:10:25.8222 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.9.12899. Product version: 4.7.9+e8712e62842e2d74d60fdf37cf74d743750e5ca2. GlobalAssemblyCache: False
+2021-05-10 16:13:30.7370 Info Message Template Auto Format enabled
+2021-05-10 16:13:30.7370 Info Loading assembly: NLog.Web.AspNetCore
+2021-05-10 16:13:30.7972 Info Adding target FileTarget(Name=allfile)
+2021-05-10 16:13:30.7972 Info Adding target FileTarget(Name=exceptions)
+2021-05-10 16:13:30.7972 Info Adding target FileTarget(Name=RequestTime)
+2021-05-10 16:13:30.8235 Info Validating config: TargetNames=allfile, exceptions, RequestTime, ConfigItems=58, FilePath=C:\Users\ddane\source\repos\LibApi\LibApi\bin\Debug\net5.0\NLog.config
+2021-05-10 16:13:30.8383 Info Configuration initialized.
+2021-05-10 16:13:30.8383 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.9.12899. Product version: 4.7.9+e8712e62842e2d74d60fdf37cf74d743750e5ca2. GlobalAssemblyCache: False
+2021-05-12 12:19:40.3218 Info Message Template Auto Format enabled
+2021-05-12 12:19:40.3330 Info Loading assembly: NLog.Web.AspNetCore
+2021-05-12 12:19:40.3688 Info Adding target FileTarget(Name=allfile)
+2021-05-12 12:19:40.3688 Info Adding target FileTarget(Name=exceptions)
+2021-05-12 12:19:40.3766 Info Adding target FileTarget(Name=RequestTime)
+2021-05-12 12:19:40.3956 Info Validating config: TargetNames=allfile, exceptions, RequestTime, ConfigItems=58, FilePath=C:\Users\ddane\source\repos\LibApi\LibApi\bin\Debug\net5.0\NLog.config
+2021-05-12 12:19:40.4081 Info Configuration initialized.
+2021-05-12 12:19:40.4081 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.9.12899. Product version: 4.7.9+e8712e62842e2d74d60fdf37cf74d743750e5ca2. GlobalAssemblyCache: False
+2021-05-12 12:19:45.2572 Info AppDomain Shutting down. Logger closing...
+2021-05-12 12:19:45.2718 Info Logger has been shut down.
